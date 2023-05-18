@@ -3,14 +3,14 @@ package SerenadeMi
 import (
   "fmt"
   "reflect"
-  "github.com/davecgh/go-spew/spew"
+  // "github.com/davecgh/go-spew/spew"
 )
 
 // This function takes SerenadeMiFunctions.Inits in which is just a recast of SerenadeMi.Inits
 // This function makes a list of all functions attached (one Initializer per function)
 
 func Init(i any) *[]Entry {
-  entries := &[]Entry
+  entries := &[]Entry{}
   t := reflect.TypeOf(i)
   fmt.Println("Initializers Found:", t.NumMethod())
 
