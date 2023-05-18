@@ -38,7 +38,7 @@ func (e *Engine) Spew() {
   spew.Dump(e)
 }
 
-// query needs to be reduced to either a single word or number in it's correct type
+// query needs to be reduced to either a single word or number in it's:s correct type
 // eventually we'll be able to add attributes here to passthrough
 func (e *Engine) Exec(query any) error {
   switch query.(type) {
@@ -52,6 +52,7 @@ func (e *Engine) Exec(query any) error {
   return nil
 }
 
+// give a subset of entries to display
 func (e *Engine) Pager(from, to uint) *[]Entry {
   list &Entry{}
   for c := from; c<=to; c++ {
