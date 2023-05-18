@@ -17,9 +17,9 @@ func Init(i any) {
     fmt.Println(mm.Name)
     val := reflect.ValueOf(i).MethodByName(mm.Name).Call([]reflect.Value{})
     res := val[0].Interface()
-    spew.Dump(res)
+    spew.Dump(res, &res, *res)
     // spew.Dump(res.Indirect())
     // fmt.Println(res)
-    *res.Fn()
+    //*res.Fn()
   }
 }
