@@ -20,6 +20,6 @@ func Init(i any) {
     spew.Dump(res) //, (res).FnName)
     // spew.Dump(res.Indirect())
     // fmt.Println(res)
-    //*res.Fn()
+    res.Fn(nil)
   }
 }
