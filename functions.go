@@ -31,3 +31,7 @@ func Init(i any) *Engine {
 func (e *Engine) Spew() {
   spew.Dump(e)
 }
+
+func (e *Engine) Exec(query any) error {
+  fmt.Println(reflect.TypeOf(query))
+}
