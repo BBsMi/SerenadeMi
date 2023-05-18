@@ -3,6 +3,7 @@ package SerenadeMi
 import (
   "fmt"
   "reflect"
+  "github.com/davecgh/go-spew/spew"
 )
 
 func Init(i any) {
@@ -15,8 +16,9 @@ func Init(i any) {
     mm := t.Method(m)
     fmt.Println(mm.Name)
     val := reflect.ValueOf(i).MethodByName(mm.Name).Call([]reflect.Value{})
-    res := *val[0]
-    fmt.Println(res)
-    res.Fn()
+    res := val[0]
+    spew.Dump(res)
+    // fmt.Println(res)
+    // res.Fn()
   }
 }
