@@ -33,6 +33,15 @@ func (e *Engine) Spew() {
 }
 
 func (e *Engine) Exec(query any) error {
-  fmt.Println(reflect.TypeOf(query))
+  //fmt.Println(reflect.TypeOf(query))
+  switch query.(type) {
+    case int:
+      fmt.Println("We have an int")
+    case string:
+      fmt.Println("We have a string")
+    default:
+      return fmt.Errorf("BADTYPE: Invalid Type")
+  }
   return nil
 }
+
