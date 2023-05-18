@@ -9,3 +9,8 @@ type Entry struct {
 	Ldesc  string                           // Function Long Description
 	Fn     func(attrib *interface{}) error  // Function itself
 }
+
+type Engine struct {
+  entries *[]Entry
+}
+

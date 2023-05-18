@@ -3,13 +3,15 @@ package SerenadeMi
 import (
   "fmt"
   "reflect"
-  // "github.com/davecgh/go-spew/spew"
+  "github.com/davecgh/go-spew/spew"
 )
 
 // This function takes SerenadeMiFunctions.Inits in which is just a recast of SerenadeMi.Inits
 // This function makes a list of all functions attached (one Initializer per function)
 
-func Init(i any) *[]Entry {
+// func Init(i any) *[]Entry {
+func Init(i any) *Engine {
+  e := &Engine{}
   entries := &[]Entry{}
   t := reflect.TypeOf(i)
   fmt.Println("Initializers Found:", t.NumMethod())
@@ -21,10 +23,11 @@ func Init(i any) *[]Entry {
     // Needs type assertion
     res := val[0].Interface().(Entry)
     *entries = append(*entries, res)
-    // spew.Dump(res) //, (res).FnName)
-    // spew.Dump(res.Indirect())
-    // fmt.Println(res)
-    //res.Fn(nil)
   }
-  return entries
+  (*e).entries = entries
+  return e
+}
+
+func (e *Engine) Spew() {
+  spew.Dump(e)
 }
