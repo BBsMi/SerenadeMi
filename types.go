@@ -3,10 +3,9 @@ package SerenadeMi
 type Inits struct {}
 
 type Entry struct {
-	fn_num  uint                            // Function Number
-	fn_name string                          // Function Name
-	s_desc  string                          // Function Short Description
-	l_desc  string                          // Function Long Description
-	fn      func(attrib *interface{}) error  // Function itself
+	FnNum  uint                             // Function Number
+	FnName string                           // Function Name
+	SDesc  string                           // Function Short Description
+	Ldesc  string                           // Function Long Description
+	Fn     func(attrib *interface{}) error  // Function itself
 }
-
