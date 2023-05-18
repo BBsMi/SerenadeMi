@@ -40,13 +40,24 @@ func (e *Engine) Spew() {
 func (e *Engine) Exec(query any) error {
   //fmt.Println(reflect.TypeOf(query))
   switch query.(type) {
-    case int:
-      fmt.Println("We have an int")
+    case uint:
+      return execByNumb(query.(uint))
     case string:
-      fmt.Println("We have a string")
+      return execByName(query.(string))
     default:
       return fmt.Errorf("BADTYPE: Invalid Type")
   }
   return nil
 }
 
+func (e *Engine) execByNumb(q uint) error {
+  res, ok := e.execByNumb[q]
+  if !ok { return fmt.Errorf("BADFUNC: Invalid Function Number") }
+  (*res).Fn(nil)
+  return nil
+}
+func (e *Engine) execByName(q string) error {
+  res, ok := e.execByName[q]
+  if !ok { return fmt.Errorf("BADFUNC: Invalid Function Name") }
+  return nil
+}
