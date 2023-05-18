@@ -13,10 +13,8 @@ import (
 func Init(i any) *Engine {
   e := &Engine{}
   
-  // entries := &[]Entry{}
-
-  (*e).ebName := make(map[string]*Entry)
-  (*e).ebNumb := make(map[uint]*Entry)
+  (*e).entriesByName = make(map[string]*Entry)
+  (*e).entriesByNumb = make(map[uint]*Entry)
 
   t := reflect.TypeOf(i)
   fmt.Println("Initializers Found:", t.NumMethod())
@@ -28,8 +26,8 @@ func Init(i any) *Engine {
     // Needs type assertion
     res := val[0].Interface().(Entry)
     // *entries = append(*entries, res)
-    (*e).ebName[res.FnName] = &res
-    (*e).ebNumb[res.FnNumb] = &res
+    (*e).entriesByName[res.FnName] = &res
+    (*e).entriesByNumb[res.FnNumb] = &res
   }
   // (*e).entries = entries
   return e
