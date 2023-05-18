@@ -54,7 +54,7 @@ func (e *Engine) Exec(query any) error {
 
 // give a subset of entries to display
 func (e *Engine) Pager(from, to uint) *[]Entry {
-  list := &Entry{}
+  list := &[]*Entry{}
   for c := from; c<=to; c++ {
     l, ok := e.entriesByNumb[c]
     if ok {
