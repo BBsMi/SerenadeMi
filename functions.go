@@ -5,8 +5,8 @@ import (
   "reflect"
 )
 
-func Init(i *Inits) {
-  fmt.Println(i)
+func Init(i *any) {
+  // fmt.Println(i)
   t := reflect.TypeOf(&i)
   fmt.Println(t.NumMethod())
 
