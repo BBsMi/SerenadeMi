@@ -5,5 +5,5 @@ import (
 )
 
 func Init() {
-  fmt.Println("Init")
+  fmt.Println(SerenadeMiFunctions.Inits)
 }
