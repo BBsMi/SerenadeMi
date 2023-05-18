@@ -41,9 +41,9 @@ func (e *Engine) Exec(query any) error {
   //fmt.Println(reflect.TypeOf(query))
   switch query.(type) {
     case uint:
-      return execByNumb(query.(uint))
+      return e.execByNumb(query.(uint))
     case string:
-      return execByName(query.(string))
+      return e.execByName(query.(string))
     default:
       return fmt.Errorf("BADTYPE: Invalid Type")
   }
@@ -51,13 +51,14 @@ func (e *Engine) Exec(query any) error {
 }
 
 func (e *Engine) execByNumb(q uint) error {
-  res, ok := e.execByNumb[q]
+  res, ok := e.entriesByNumb[q]
   if !ok { return fmt.Errorf("BADFUNC: Invalid Function Number") }
   (*res).Fn(nil)
   return nil
 }
 func (e *Engine) execByName(q string) error {
-  res, ok := e.execByName[q]
+  res, ok := e.entriesByName[q]
   if !ok { return fmt.Errorf("BADFUNC: Invalid Function Name") }
+  (*res).Fn(nil)
   return nil
 }
