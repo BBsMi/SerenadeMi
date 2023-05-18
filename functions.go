@@ -6,20 +6,25 @@ import (
   "github.com/davecgh/go-spew/spew"
 )
 
-func Init(i any) {
-  // fmt.Println(i)
+// This function takes SerenadeMiFunctions.Inits in which is just a recast of SerenadeMi.Inits
+// This function makes a list of all functions attached (one Initializer per function)
+
+func Init(i any) *[]Entry {
+  entries := &[]Entry
   t := reflect.TypeOf(i)
-  fmt.Println(t.NumMethod())
+  fmt.Println("Initializers Found:", t.NumMethod())
 
   for m := 0; m < t.NumMethod(); m++ {
-    // fmt.Println(runtime.FuncForPC(t.Method(m).Pointer()).Name())
     mm := t.Method(m)
     fmt.Println(mm.Name)
     val := reflect.ValueOf(i).MethodByName(mm.Name).Call([]reflect.Value{})
-    res := val[0]
-    spew.Dump(res) //, (res).FnName)
+    // Needs type assertion
+    res := val[0].Interface().(Entry)
+    *entries = append(*entries, res)
+    // spew.Dump(res) //, (res).FnName)
     // spew.Dump(res.Indirect())
     // fmt.Println(res)
-    res.Fn(nil)
+    //res.Fn(nil)
   }
+  return entries
 }
