@@ -16,7 +16,7 @@ func Init(i any) {
     fmt.Println(mm.Name)
     val := reflect.ValueOf(i).MethodByName(mm.Name).Call([]reflect.Value{})
     res := val[0]
-    fmt.Println(*res)
-    *res.Fn()
+    fmt.Println(res)
+    res.Fn()
   }
 }
