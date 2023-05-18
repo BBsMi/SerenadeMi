@@ -7,6 +7,6 @@ type Entry struct {
 	fn_name string                          // Function Name
 	s_desc  string                          // Function Short Description
 	l_desc  string                          // Function Long Description
-	fn      func(attrib interface{}) error  // Function itself
+	fn      func(attrib *interface{}) error  // Function itself
 }
 

@@ -38,16 +38,28 @@ import "(your package url)/menu"
  
 ```
 
+### Link your struct
+
+Golang will not accept new functions added to an external package. To get around this we must declare we are extending the packages struct. in `menu/types.go`
+
+```golang
+package SerenadeMiFunctions
+
+import "github.com/BBsMi/SerenadeMi"
+
+type Inits SerenadeMi.Inits
+```
+
 ### Create your functions
 
 Create your functions in `./menu` using some sort of standardize naming scheme (examples: `F(function number).go`, `(function short name).go`, `(function number).go`) using the following template. Replace `FXXX` with F and that functions number.
 
 ```golang
-package SerenadeMi
+package SerenadeMiFunctions
 
 func (i *Inits) FXXX_Init() *Entry { return nil }
 
-func FXXX(attrib interface{}) error { return nil }
+func FXXX(attrib *interface{}) error { return nil }
 
 ```
 
