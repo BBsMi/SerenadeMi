@@ -3,7 +3,7 @@ package SerenadeMi
 type Inits struct {}
 
 type Entry struct {
-	FnNum  uint                             // Function Number
+	FnNumb uint                             // Function Number
 	FnName string                           // Function Name
 	SDesc  string                           // Function Short Description
 	Ldesc  string                           // Function Long Description
@@ -11,6 +11,7 @@ type Entry struct {
 }
 
 type Engine struct {
-  entries *[]Entry
+  // entries *[]Entry
+  entriesByNumb map[uint]*Entry
+  entriesByName map[string]*Entry
 }
-
