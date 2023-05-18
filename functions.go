@@ -33,12 +33,14 @@ func Init(i any) *Engine {
   return e
 }
 
+// Spew your secrets 
 func (e *Engine) Spew() {
   spew.Dump(e)
 }
 
+// query needs to be reduced to either a single word or number in it's correct type
+// eventually we'll be able to add attributes here to passthrough
 func (e *Engine) Exec(query any) error {
-  //fmt.Println(reflect.TypeOf(query))
   switch query.(type) {
     case uint:
       return e.execByNumb(query.(uint))
@@ -50,17 +52,27 @@ func (e *Engine) Exec(query any) error {
   return nil
 }
 
+func (e *Engine) Pager(from, to uint) *[]Entry {
+  list &Entry{}
+  for c := from; c<=to; c++ {
+    l, ok := e.entriesByNumb[c]
+    if ok {
+      *list := append(*list, l)
+    }
+  }
+  return list
+}
+
+// Function Number => Function
 func (e *Engine) execByNumb(q uint) error {
   res, ok := e.entriesByNumb[q]
   if !ok { return fmt.Errorf("BADFUNC: Invalid Function Number") }
-  (*res).Fn(nil)
-  return nil
+  return (*res).Fn(nil)
 }
+
+// Function Name => Function
 func (e *Engine) execByName(q string) error {
-  /*
   res, ok := e.entriesByName[q]
   if !ok { return fmt.Errorf("BADFUNC: Invalid Function Name") }
-  (*res).Fn(nil)
-  */
-  return nil
+  return (*res).Fn(nil)
 }
