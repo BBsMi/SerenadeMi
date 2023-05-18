@@ -51,11 +51,9 @@ func (e *Engine) Exec(query any) error {
 }
 
 func (e *Engine) execByNumb(q uint) error {
-  spew.Dump(e.entriesByNumb[q])
-  /* res, ok := e.entriesByNumb[q]
+  res, ok := e.entriesByNumb[q]
   if !ok { return fmt.Errorf("BADFUNC: Invalid Function Number") }
   (*res).Fn(nil)
-  */
   return nil
 }
 func (e *Engine) execByName(q string) error {
