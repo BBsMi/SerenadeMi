@@ -1,3 +1,3 @@
-module github.com/BBSMi/SerenadeMi
+module github.com/BBsMi/SerenadeMi
 
 go 1.19
