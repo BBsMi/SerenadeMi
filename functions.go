@@ -34,4 +34,5 @@ func (e *Engine) Spew() {
 
 func (e *Engine) Exec(query any) error {
   fmt.Println(reflect.TypeOf(query))
+  return nil
 }
